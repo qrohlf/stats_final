@@ -8,7 +8,7 @@ require 'json'
 require 'parallel'
 
 Octokit.configure do |c|
-  c.access_token = 'b88a350a62dc76da2628e7d1867514a15520f53c'
+  c.access_token = 'dcd59f310b665617d419765db2b93906f62aa9f8'
 end
 
 # stats for user

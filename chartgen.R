@@ -11,7 +11,7 @@ custom_theme <- function() {
   color.grid.major = palette[3]
   color.axis.text = palette[6]
   color.axis.title = palette[7]
-  color.title = palette[9]
+  color.title = palette[7]
   
   # Begin construction of chart
   theme_bw(base_size=9) +
@@ -55,14 +55,14 @@ ggplot(data, aes(pr_ratio)) +
   labs(title="Distribution of GitHub PR Acceptance Rate", x="PR Acceptance Ratio", y="Frequency") +
   custom_theme()
 
-ggplot(data, aes(x=stars, y=pr_ratio)) + 
-  geom_point() + 
-  scale_x_log10(labels=comma) +
-  labs(title="PR Acceptance Rate vs Combined Star Count", x="Number of Stars", y="PR Acceptance Ratio") +
+ggplot(data, aes(stars)) + 
+  geom_histogram(binwidth=.05) + 
+  scale_x_log10(labels=comma, breaks=10^(0:6)) +
+  labs(title="Distribution of GitHub User Star Counts", x="Star Count", y="Frequency") +
   custom_theme()
 
-ggplot(data, aes(x=forks, y=pr_ratio)) + 
-  geom_point() + 
-  scale_x_log10(labels=comma) +
-  labs(title="PR Acceptance Rate vs Combined Fork Count", x="Number of Forks", y="PR Acceptance Ratio") +
+ggplot(data, aes(x=stars, y=pr_ratio, size=5)) + 
+  geom_point(alpha=0.2, color="#c0392b") + 
+  scale_x_log10(labels=comma, breaks=10^(0:6)) +
+  labs(title="PR Acceptance Rate vs Combined Star Count", x="Number of Stars", y="PR Acceptance Ratio") +
   custom_theme()
